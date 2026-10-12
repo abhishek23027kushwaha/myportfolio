@@ -3,9 +3,16 @@
 const rawUrl = import.meta.env.VITE_API_URL;
 
 const formatApiBase = () => {
-  if (!rawUrl) return '/api';
-  const cleanUrl = rawUrl.trim().replace(/\/+$/, '');
-  return cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
+  if (rawUrl) {
+    const cleanUrl = rawUrl.trim().replace(/\/+$/, '');
+    return cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
+  }
+  // In production, fallback to live Render backend if VITE_API_URL is omitted
+  if (import.meta.env.PROD) {
+    return 'https://myportfolio-sxi9.onrender.com/api';
+  }
+  // In local dev, use local proxy /api
+  return '/api';
 };
 
 export const API_BASE = formatApiBase();
