@@ -12,6 +12,7 @@ import Project from "./models/Project.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 dotenv.config({ path: join(__dirname, ".env") });
+dotenv.config({ path: join(__dirname, "..", ".env") });
 
 const app = express();
 
@@ -105,12 +106,15 @@ const seedProjectsIfEmpty = async () => {
 };
 
 // Connect to DB for Serverless execution
-connectDB().then(() => seedProjectsIfEmpty()).catch(console.error);
+connectDB().then((connected) => {
+    if (connected) seedProjectsIfEmpty();
+}).catch(console.error);
 
-if (process.env.NODE_ENV !== "production") {
-    const PORT = process.env.PORT || 5000;
+const isVercel = Boolean(process.env.VERCEL);
+if (!isVercel) {
+    const PORT = process.env.PORT || 5001;
     app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}`);
+        console.log(`Server running on port ${PORT}`);
     });
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SectionTitle from './SectionTitle';
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 const EMOJI_OPTIONS = ['🚀', '💻', '🛒', '🤖', '📊', '🧠', '💬', '📝', '⚡', '🎮', '🌐', '📱', '🔒', '📦'];
 

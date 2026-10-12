@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export default function AdminLogin({ isOpen, onClose, onLoginSuccess }) {
   const [username, setUsername] = useState('');
