@@ -8,8 +8,7 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AdminLogin from './components/AdminLogin';
-
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+import API_BASE from './apiConfig';
 
 function App() {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);

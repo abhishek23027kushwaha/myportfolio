@@ -1,5 +1,5 @@
-// API service — connects frontend to backend
-const BASE_URL = import.meta.env.VITE_API_URL || '/api'
+import API_BASE from '../apiConfig';
+const BASE_URL = API_BASE;
 
 // Send contact message
 export const sendMessage = async (formData) => {
