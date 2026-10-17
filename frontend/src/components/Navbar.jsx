@@ -72,13 +72,13 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-inner">
 
-        {/* LEFT — AJ logo */}
+        {/* LEFT — AK logo */}
         <div
           className="navbar-logo"
           onClick={() => scrollTo('Home')}
           style={{ cursor: 'pointer' }}
         >
-          AJ
+          AK
         </div>
 
         {/* MIDDLE — nav links pill (desktop) */}
