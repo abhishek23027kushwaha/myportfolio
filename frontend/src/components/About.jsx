@@ -18,6 +18,15 @@ const fullText = prefix + name + suffix
 export default function About() {
   const [displayedLength, setDisplayedLength] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [activeSkillIndex, setActiveSkillIndex] = useState(0)
+
+  // Auto-blink tech stack skills sequentially one by one from start to end continuously
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSkillIndex((prev) => (prev + 1) % skills.length)
+    }, 650)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     let timer
@@ -121,8 +130,9 @@ export default function About() {
                 {skills.map((skill, i) => (
                   <span
                     key={skill}
-                    className="about-skill-pill"
+                    className={`about-skill-pill ${i === activeSkillIndex ? 'auto-blink' : ''}`}
                     style={{ animationDelay: `${i * 0.07}s` }}
+                    onMouseEnter={() => setActiveSkillIndex(i)}
                   >
                     {skill}
                   </span>
