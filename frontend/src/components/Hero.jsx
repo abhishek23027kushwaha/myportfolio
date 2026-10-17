@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Button from './Button'
 import SocialLinks from './SocialLinks'
 import SpotifyPlaylist from './SpotifyPlaylist'
-import ResumeSpotlightIntro from './ResumeSpotlightIntro'
 import resumePdf from '../assets/resume.pdf'
 
 export default function Hero() {
@@ -126,13 +125,6 @@ export default function Hero() {
 
         </div>
       </div>
-
-      {/* Mobile first-scroll resume spotlight reveal */}
-      <ResumeSpotlightIntro
-        resumePdf={resumePdf}
-        onDownload={handleDownloadResume}
-        downloading={downloading}
-      />
     </section>
   )
 }
